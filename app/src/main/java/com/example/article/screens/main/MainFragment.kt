@@ -14,7 +14,6 @@ import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 
 class MainFragment : MvpAppCompatFragment(), MainView {
-
     @InjectPresenter
     lateinit var mainPresenter:MainPresenter
     private lateinit var recycleView: RecyclerView
