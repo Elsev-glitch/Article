@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="corner_radius">10dp</dimen>
+    <dimen name="elevation">10dp</dimen>
+    <dimen name="app_margin">10dp</dimen>
+    <dimen name="separator">1dp</dimen>
+    <dimen name="large_text">20sp</dimen>
+    <dimen name="normal_text">16sp</dimen>
+    <dimen name="fragment_height">0dp</dimen>
+    <dimen name="margin_normal">0dp</dimen>
+    <dimen name="large_margin">20dp</dimen>
+    <dimen name="zero_width">0dp</dimen>
+    <dimen name="zero">0dp</dimen>
+</resources>

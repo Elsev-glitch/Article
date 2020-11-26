@@ -1,0 +1,31 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/separator</item>
+        <item name="android:background">@color/colorGrey</item>
+        <item name="android:layout_marginTop">@dimen/app_margin</item>
+    </style>
+
+    <style name="separatorToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/separator</item>
+        <item name="android:background">@color/colorLightGrey</item>
+        <item name="android:layout_marginTop">@dimen/app_margin</item>
+    </style>
+
+    <style name="postText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:layout_margin">@dimen/margin_normal</item>
+    </style>
+
+</resources>
