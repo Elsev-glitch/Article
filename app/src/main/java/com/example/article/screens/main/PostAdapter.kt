@@ -17,9 +17,9 @@ class PostAdapter() : ListAdapter<PostItem, PostAdapter.PostViewHolder>(DiffCall
         fun bind(item: PostItem) = with(itemView) {
             title.text = item.title
 
-            setOnClickListener {
-                MainFragment.onClick(item)
-            }
+//            setOnClickListener {
+//                MainFragment.onClick(item)
+//            }
         }
 
     }
@@ -32,6 +32,18 @@ class PostAdapter() : ListAdapter<PostItem, PostAdapter.PostViewHolder>(DiffCall
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
+
+    override fun onViewAttachedToWindow(holder: PostViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        holder.itemView.setOnClickListener {
+            MainFragment.onClick(getItem(holder.adapterPosition))
+        }
+    }
+
+    override fun onViewDetachedFromWindow(holder: PostViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.itemView.setOnClickListener(null)
     }
 }
 
