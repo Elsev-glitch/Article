@@ -5,6 +5,7 @@ import com.example.article.data.network.PostApi
 
 class PostRepository(private val api: PostApi): BaseRepository() {
     suspend fun getPosts(): MutableList<PostItem>?{
+//    suspend fun getPosts(): List<PostItem>?{
         val postResponse = safeApiCall(
             call = {api.getPosts().await()},
             errorMesage = "Error Post"

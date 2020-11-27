@@ -9,4 +9,5 @@ import moxy.viewstate.strategy.StateStrategyType
 interface MainView : MvpView {
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showPosts(postItemList: MutableList<PostItem>)
+//    fun showPosts(postItemList: List<PostItem>)
 }
