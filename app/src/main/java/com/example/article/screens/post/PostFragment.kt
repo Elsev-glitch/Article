@@ -1,9 +1,8 @@
 package com.example.article.screens.post
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.navigation.ActivityNavigatorExtras
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.article.MainActivity
@@ -37,6 +36,8 @@ class PostFragment : MvpAppCompatFragment(), PostView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        setHasOptionsMenu(true)
+
         if ((activity as MainActivity).toolbarImage.visibility == View.VISIBLE){
             (activity as MainActivity).toolbarImage.visibility = View.GONE
         }
@@ -45,10 +46,21 @@ class PostFragment : MvpAppCompatFragment(), PostView {
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        (activity as MainActivity).toolbar.setNavigationOnClickListener(View.OnClickListener {
-            val action = PostFragmentDirections.actionPostFragmentToMainFragment()
-            view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
-        })
+//        (activity as MainActivity).toolbar.setNavigationOnClickListener(View.OnClickListener {
+//            val action = PostFragmentDirections.actionPostFragmentToMainFragment()
+//            view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
+//            (activity as MainActivity).onBackPressed()
+//        })
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home-> {
+                (activity as MainActivity).onBackPressed()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun showPost(post: PostItem) {
