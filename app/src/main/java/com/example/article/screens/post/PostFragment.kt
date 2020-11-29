@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.article.MainActivity
 import com.example.article.R
 import com.example.article.data.entity.PostItem
@@ -16,9 +18,12 @@ import moxy.presenter.ProvidePresenter
 class PostFragment : MvpAppCompatFragment(), PostView {
     @InjectPresenter
     lateinit var postPresenter: PostPresenter
+
+    val args: PostFragmentArgs by navArgs()
     @ProvidePresenter
     fun providePostPresenter():PostPresenter{
-        return PostPresenter(arguments?.getSerializable("post") as PostItem)
+//        return PostPresenter(arguments?.getSerializable("post") as PostItem)
+        return PostPresenter(args.argumentPost)
     }
 
     override fun onCreateView(
@@ -41,7 +46,8 @@ class PostFragment : MvpAppCompatFragment(), PostView {
         (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
 
         (activity as MainActivity).toolbar.setNavigationOnClickListener(View.OnClickListener {
-            (activity as MainActivity).navController.navigate(R.id.action_postFragment_to_mainFragment)
+            val action = PostFragmentDirections.actionPostFragmentToMainFragment()
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
         })
     }
 

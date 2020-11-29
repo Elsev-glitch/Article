@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.article.MainActivity
 import com.example.article.R
 import com.example.article.presenter.StartPresenter
@@ -23,6 +25,8 @@ class StartFragment : MvpAppCompatFragment(), StartView {
     }
 
     override fun replaceMainFragment() {
-        (activity as MainActivity).navController.navigate(R.id.action_startFragment_to_mainFragment)
+//        (activity as MainActivity).navController.navigate(R.id.action_startFragment_to_mainFragment)
+        val action = StartFragmentDirections.actionStartFragmentToMainFragment()
+        view?.let { Navigation.findNavController(it).navigate(action) }
     }
 }

@@ -36,5 +36,8 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_graph"
             app:popUpToInclusive="false" />
+        <argument
+            android:name="argumentPost"
+            app:argType="com.example.article.data.entity.PostItem" />
     </fragment>
 </navigation>

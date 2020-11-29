@@ -10,16 +10,20 @@ import com.example.article.R
 import com.example.article.data.entity.PostItem
 import kotlinx.android.synthetic.main.main_item.view.*
 
-class PostAdapter() : ListAdapter<PostItem, PostAdapter.PostViewHolder>(DiffCallBack()) {
+class PostAdapter(private var click: (post: PostItem) -> Unit) :
+    ListAdapter<PostItem, PostAdapter.PostViewHolder>(DiffCallBack()){
 
-    class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        init {
+            itemView.setOnClickListener {
+                click(getItem(adapterPosition))
+            }
+        }
 
         fun bind(item: PostItem) = with(itemView) {
             title.text = item.title
 
-//            setOnClickListener {
-//                MainFragment.onClick(item)
-//            }
         }
 
     }
@@ -32,18 +36,6 @@ class PostAdapter() : ListAdapter<PostItem, PostAdapter.PostViewHolder>(DiffCall
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bind(getItem(position))
-    }
-
-    override fun onViewAttachedToWindow(holder: PostViewHolder) {
-        super.onViewAttachedToWindow(holder)
-        holder.itemView.setOnClickListener {
-            MainFragment.onClick(getItem(holder.adapterPosition))
-        }
-    }
-
-    override fun onViewDetachedFromWindow(holder: PostViewHolder) {
-        super.onViewDetachedFromWindow(holder)
-        holder.itemView.setOnClickListener(null)
     }
 }
 

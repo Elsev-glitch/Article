@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.article.APP_ACTIVITY
 import com.example.article.MainActivity
+import com.example.article.POST
 import com.example.article.R
 import com.example.article.data.entity.PostItem
 import com.example.article.presenter.MainPresenter
@@ -16,18 +17,20 @@ import moxy.presenter.InjectPresenter
 
 class MainFragment : MvpAppCompatFragment(), MainView {
     @InjectPresenter
-    lateinit var mainPresenter:MainPresenter
+    lateinit var mainPresenter: MainPresenter
     private lateinit var recycleView: RecyclerView
-//    private lateinit var adapter: MainAdapter
-    private val adapter = PostAdapter()
+
+    //    private lateinit var adapter: MainAdapter
+    private val adapter = PostAdapter({onClick(it)})
     private var list: ArrayList<PostItem>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -49,18 +52,14 @@ class MainFragment : MvpAppCompatFragment(), MainView {
         adapter.submitList(postItemList)
     }
 
-//        fun onClick(post: PostItem){
-//            val bundle = Bundle()
-//            bundle.putSerializable("post", post)
-//            (activity as MainActivity).navController.navigate(R.id.action_mainFragment_to_postFragment, bundle)
-//        }
-
-    companion object{
-        fun onClick(post: PostItem){
-            val bundle = Bundle()
-            bundle.putSerializable("post", post)
-
-            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_postFragment,bundle)
-        }
+    fun onClick(post: PostItem) {
+//        val bundle = Bundle()
+//        bundle.putSerializable(POST, post)
+//        (activity as MainActivity).navController.navigate(
+//            R.id.action_mainFragment_to_postFragment,
+//            bundle
+//        )
+        val action = MainFragmentDirections.actionMainFragmentToPostFragment(post)
+        view?.let { Navigation.findNavController(it).navigate(action) }
     }
 }

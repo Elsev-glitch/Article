@@ -11,15 +11,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var navController: NavController
+//    lateinit var navController: NavController
     lateinit var toolbar: Toolbar
     lateinit var toolbarImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        APP_ACTIVITY = this
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+//        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         title = ""
