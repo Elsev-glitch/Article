@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    val a: String = ""
     lateinit var toolbar: Toolbar
     lateinit var toolbarImage: ImageView
 
