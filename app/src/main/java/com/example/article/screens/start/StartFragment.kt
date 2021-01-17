@@ -25,7 +25,6 @@ class StartFragment : MvpAppCompatFragment(), StartView {
     }
 
     override fun replaceMainFragment() {
-//        (activity as MainActivity).navController.navigate(R.id.action_startFragment_to_mainFragment)
         val action = StartFragmentDirections.actionStartFragmentToMainFragment()
         view?.let { Navigation.findNavController(it).navigate(action) }
     }

@@ -21,7 +21,6 @@ class PostFragment : MvpAppCompatFragment(), PostView {
     val args: PostFragmentArgs by navArgs()
     @ProvidePresenter
     fun providePostPresenter():PostPresenter{
-//        return PostPresenter(arguments?.getSerializable("post") as PostItem)
         return PostPresenter(args.argumentPost)
     }
 
@@ -45,12 +44,6 @@ class PostFragment : MvpAppCompatFragment(), PostView {
 
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
-
-//        (activity as MainActivity).toolbar.setNavigationOnClickListener(View.OnClickListener {
-//            val action = PostFragmentDirections.actionPostFragmentToMainFragment()
-//            view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
-//            (activity as MainActivity).onBackPressed()
-//        })
 
     }
 
